@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="panel panel-default" style="text-align: center;width: 100%;text-emphasis: 200;">
+        <div class="panel-body" style="background-color:azure"><h2>Blog Application</h2></div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><b> Add Blog Post </b></div>
+
+        <div class="panel-body" style="margin-left: 5%;margin-right: 5%;">
+        <form method="POST" action="/add">
+            <input type='hidden' name='ssr' value="y"/>
+
+            <label> Title </label>
+            <input style="width: 30%;" class="form-control" type="text" name="title" required placeholder="Enter Name">
+            <br>
+
+            <label>Choose a Category:</label> 
+            <select style="width: 30%;" class="form-control" name="category" required>
+                <option value="entertainment">Entertainment</option>
+                <option value="technology">Technology</option>
+                <option value="dsa">DSA</option>
+                <option value="web">Web</option>
+                <option value="android">Android</option>
+            </select>
+            <br>
+
+            <label>Email</label>
+            <input style="width: 30%;" class="form-control" type='email' required name='email' placeholder="Enter Your Email">
+            <br>
+
+            <label> Author </label>
+            <input style="width: 30%;" class="form-control" type='text' required name='author' placeholder="Enter author name"> 
+            <br>
+
+            <label>Content</label>
+            <p><textarea style="width: 40%;" class="form-control" required name='content'rows="7" cols="70" placeholder="Enter your views...."></textarea></p> 
+            
+            <label>Date of Upload</label>
+            <input style="width: 30%;" class="form-control" type='date' required name='dateupload'> 
+            <br>
+
+            <input class="btn btn-success" type='submit' value="Save Blog !!!">
+            {{!-- <button type='submit' id="btn">Save Blog !!!</button> --}}
+        </form>
+        </div>
+    </div>  
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Blog Post</b></div>
+        <div class="panel-body">
+        <ul class="list-group" id='bloglist'>
+        {{#each blogs as |blog|}}
+        <li class="list-group-item list-group-item-warning">
+            <div class="row">
+                <div class="col-sm-4" style="width: 5%;">
+                    <form action='/updatepage' method="POST">
+                        <input type="hidden" name='updateitem' value="{{blog.title}}" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-primary" type="submit" value="Edit" />
+                    </form>
+                </div>
+                <div class="col-sm-4" style="width: 7%;">
+                    <form action='/delete' method='post'>
+                        <input type="hidden" name='delitem' value="{{blog.title}}" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-danger" type="submit" value="Delete" />
+                    </form>
+                </div>
+                <div class="col-sm-4" style="width: 5%;">
+                    <form action='/up' method="POST">
+                        <input type="hidden" name="titleitem" value="{{blog.title}}" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-info" type='submit' value="Up"/>
+                    </form>
+                </div>
+                <div class="col-sm-4" style="width: 5%;">
+                    <form action='/down' method="post">
+                        <input type="hidden" name="titleitem" value="{{blog.title}}" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-warning" type='submit' value="Down"/>
+                    </form>
+                </div>
+            </div>           
+
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; TITLE: {{blog.title}} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; CATEGORY: {{blog.category}} <br> 
+            &nbsp;&nbsp;&nbsp;&nbsp; EMAIL: {{blog.email}} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; AUTHOR: {{blog.author}} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; CONTENT: {{blog.content}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp; UPLOAD DATE: {{blog.dateupload}} <br>
+            <br>
+        </li><br>
+        {{/each}}
+        </ul>
+        </div>
+    </div> 
+</body>
+</html>

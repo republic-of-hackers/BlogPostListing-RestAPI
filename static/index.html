@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog App</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src='script.js'></script>
+    <link rel="stylesheet" href='style.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <noscript>
+        Javascript is disabled in your browser. <br>
+        <a href="/site"> Click here to continue. </a>
+    </noscript>
+    <div id='blogdashboard' style='display:none;'>
+
+    <div class="panel panel-default" style="text-align: center;width: 100%;text-emphasis: 200;">
+        <div class="panel-body" style="background-color:azure"><h2>Blog Application</h2></div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><b> Add Blog Post </b></div>
+        <div class="panel-body" style="margin-left: 5%;margin-right: 5%;">
+            <form>
+                <input type='hidden' name='ssr' value="n"/>
+                
+                <span>
+                <label> Title </label>
+                <input type="text" style="width: 30%;" id="title" class="form-control" required placeholder="Enter Name">
+                <br>
+
+                <label>Choose a Category:</label> 
+                <select style="width: 30%;" class="form-control" id="category" required>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="technology">Technology</option>
+                    <option value="dsa">DSA</option>
+                    <option value="web">Web</option>
+                    <option value="android">Android</option>
+                </select>
+                <br>
+                
+                <label>Email</label>
+                <input style="width: 30%;" type='email' class="form-control" required id='email' placeholder="Enter Your Email"> 
+                <br>
+
+                <label> Author </label>
+                <input type='text' style="width: 30%;" class="form-control" required id='author' placeholder="Enter author name"> 
+                <br>
+                </span>
+
+                <label>Content</label>
+                <p><textarea class="form-control" style="width: 40%;" required id='content'rows="7" cols="70" placeholder="Enter your views...."></textarea></p>
+
+                <label>Date of Upload</label>
+                <input type='date' style="width: 15%;" class="form-control" required id='dateupload'> 
+                <br>
+                
+                <button class="btn btn-success" id="btn">Save Blog !!!</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Blog Post</b></div>
+        <div class="panel-body"><ul class="list-group" id='bloglist'>
+        </ul></div>
+    </div>
+
+</div>
+<script>document.getElementById('blogdashboard').style.display="block";</script>
+</body>
+</html>

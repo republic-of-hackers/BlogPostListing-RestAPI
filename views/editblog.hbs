@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div>
+        <div>
+            <h1> Edit Current Blog {{itemtitle}}</h1>
+        </div>
+
+        <div style="text-align: left;width: 100%;">
+        <h3> Add Blog Post </h3>
+        <form method="POST" action="/update">
+            <input type='hidden' name='ssr' value="y"/>
+            <input type="hidden" name='titleitem' value='{{itemtitle}}'/>
+            
+            <label> Title </label>
+            <input style="width: 30%;" class="form-control" type="text" name="title" required placeholder="Enter Name">
+            <br>
+
+            <label>Choose a Category:</label> 
+            <select style="width: 30%;" class="form-control" name="category" required>
+                <option value="entertainment">Entertainment</option>
+                <option value="technology">Technology</option>
+                <option value="dsa">DSA</option>
+                <option value="web">Web</option>
+                <option value="android">Android</option>
+            </select>
+            <br>
+
+            <label>Email</label>
+            <input style="width: 30%;" class="form-control" type='email' required name='email' placeholder="Enter Your Email">
+            <br>
+
+            <label> Author </label>
+            <input style="width: 30%;" class="form-control" type='text' required name='author' placeholder="Enter author name"> 
+            <br>
+
+            <label>Content</label>
+            <p><textarea style="width: 40%;" class="form-control" required name='content'rows="7" cols="70" placeholder="Enter your views...."></textarea></p> 
+            
+            <label>Date of Upload</label>
+            <input style="width: 30%;" class="form-control" type='date' required name='dateupload'> 
+            <br>
+
+            <input class="btn btn-success" type='submit' value="Save Blog !!!">
+            {{!-- <button type='submit' id="btn">Save Blog !!!</button> --}}
+        </form>
+    </div>
+
+    </div>
+</body>
+</html>
